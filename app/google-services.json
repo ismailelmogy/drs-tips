@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "118570913057",
+    "firebase_url": "https://dr-tips.firebaseio.com",
+    "project_id": "dr-tips",
+    "storage_bucket": "dr-tips.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118570913057:android:60bc528212e26f45",
+        "android_client_info": {
+          "package_name": "ocs.com.dr_tips"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118570913057-s6hv2pfejugfsi9jn9t11av8mnvo9pdq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ocs.com.dr_tips",
+            "certificate_hash": "638791d4eece12a4a199f1d09dd8a76b70ce7ee2"
+          }
+        },
+        {
+          "client_id": "118570913057-q64g0698g0mc89qeofpfq19f484jv37a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMQWhd5cP-KOcKt_FMil4vRv467whZU-o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118570913057-q64g0698g0mc89qeofpfq19f484jv37a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
