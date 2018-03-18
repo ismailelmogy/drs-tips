@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import ocs.com.dr_tips.R;
 import ocs.com.dr_tips.fragment.LoginFragment;
@@ -31,5 +32,6 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
         transaction.replace(R.id.fragment_container,new LoginFragment())
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
+        Log.d("LOGIN_ACTIVITY", "launching fragments");
     }
 }
