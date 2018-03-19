@@ -67,31 +67,22 @@ public class LoginFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container);
+        View view = inflater.inflate(R.layout.fragment_login, container,false);
         ButterKnife.bind(this, view);
         setListeners();
         //make underline
         ForgetPassword.setText(Html.fromHtml(String.format(getString(R.string.forget_password))));
-        validateEmail();
-        validatePassword();
+        //validateEmailPass();
         Login();
         return view;
     }
 
     private void Login() {
-        Auth = FirebaseAuth.getInstance();
-        String inputEmail = email.getText().toString();
-        final String inputPassword = password.getText().toString();
-        login.setOnClickListener(view->{
-            if (TextUtils.isEmpty(inputEmail)) {
-                Toast.makeText(getContext(), "Enter email address", Toast.LENGTH_SHORT).show();
-                return;
-            }
 
-            if (TextUtils.isEmpty(inputPassword)) {
-                Toast.makeText(getContext(), "Enter password", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        login.setOnClickListener(view->{
+            Auth = FirebaseAuth.getInstance();
+            String inputEmail = email.getText().toString();
+            String inputPassword = password.getText().toString();
             //authenticate user
             Auth.signInWithEmailAndPassword(inputEmail, inputPassword)
                     .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
@@ -99,8 +90,8 @@ public class LoginFragment extends Fragment{
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Log.d("success", "signInWithEmail:success");
                                 FirebaseUser user = Auth.getCurrentUser();
+                                Toast.makeText(getContext(), "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Exception exception = task.getException();
@@ -114,37 +105,41 @@ public class LoginFragment extends Fragment{
       });
     }
 
-    private void validatePassword() {
-         String passvalidate = password.getText().toString();
-         password.addTextChangedListener(new TextWatcher() {
-             public void afterTextChanged(Editable s) {
-                 if(TextUtils.isEmpty(passvalidate) || passvalidate.length() < 6)
-                  {
-                     PasswordErrorText.setError("password Length is too short");
-                 }
-             }
-             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                 // other stuffs
-             }
-             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                 // other stuffs
-             }
-         });
-    }
 
-    private void validateEmail() {
-
-        String emailvalidate = email.getText().toString().trim();
-
+    private void validateEmailPass() {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        password.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                if(s.toString().isEmpty() || s.length() < 6)
+                {
+                    PasswordErrorText.setError("password Length is too short");
+                    PasswordErrorText.setVisibility(View.VISIBLE);
+
+                }
+                else
+                PasswordErrorText.setVisibility(View.GONE);
+
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // other stuffs
+            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // other stuffs
+            }
+        });
 
         email.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
 
-                if (!emailvalidate.matches(emailPattern) || s.length() < 0)
+                if (!s.toString().matches(emailPattern) || s.length() < 0)
                 {
                     EmailErrorText.setText("invalid email");
+                    EmailErrorText.setVisibility(View.VISIBLE);
+
                 }
+                else
+                    EmailErrorText.setVisibility(View.GONE);
+
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // other stuffs
