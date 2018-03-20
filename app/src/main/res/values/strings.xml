@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Dr-Tips</string>
     <string name="register_now">Register NOW!!</string>
-    <string name="forget_password"> <u> Forget Password ?</u> </string>
+    <string name="forget_password"><![CDATA[<u> Forget Password ?</u>]]>  </string>
     <string name="unfound_user">User not found</string>
     <string name="invalid_password">Password is not correct</string>
+    <string name="login">Login</string>
+    <string name="facebook_login">Login with Facebook</string>
 
 </resources>
 
