@@ -1,5 +1,6 @@
 package ocs.com.dr_tips.activity;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         launchLoginFragment();
+
     }
 
     private void launchLoginFragment() {

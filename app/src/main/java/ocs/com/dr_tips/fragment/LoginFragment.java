@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -74,6 +75,7 @@ public class LoginFragment extends Fragment{
         else
             startActivity(new Intent(getActivity(), LoginActivity.class));
 
+
     }
 
     @Nullable
@@ -82,7 +84,9 @@ public class LoginFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_login, container,false);
         ButterKnife.bind(this, view);
         setListeners();
-       // getActivity().getActionBar().setTitle("");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
+
+
         //make underline
         forgetPassword.setText(Html.fromHtml(getString(R.string.forget_password)));
         validateEmailPass();
@@ -131,7 +135,7 @@ public class LoginFragment extends Fragment{
             public void afterTextChanged(Editable s) {
                 if(s.toString().isEmpty() || s.length() < 6)
                 {
-                    PasswordErrorText.setError("password Length is too short");
+                    PasswordErrorText.setText("password Length is too short");
                     PasswordErrorText.setVisibility(View.VISIBLE);
 
                 }
