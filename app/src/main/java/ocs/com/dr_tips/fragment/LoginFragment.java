@@ -1,9 +1,11 @@
 package ocs.com.dr_tips.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.Html;
@@ -31,6 +33,8 @@ import com.google.firebase.auth.FirebaseUser;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ocs.com.dr_tips.R;
+import ocs.com.dr_tips.activity.HomeActivity;
+import ocs.com.dr_tips.activity.LoginActivity;
 
 /**
  * Created by Randa on 3/18/2018.
@@ -51,6 +55,8 @@ public class LoginFragment extends Fragment{
     TextView emailErrorText;
     @BindView(R.id.passworderror)
     TextView PasswordErrorText;
+    @BindView(R.id.fab_btn)
+    FloatingActionButton register;
     private FirebaseAuth Auth;
 
 
@@ -61,6 +67,13 @@ public class LoginFragment extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        Auth = FirebaseAuth.getInstance();
+        if (Auth.getCurrentUser() != null) {
+            startActivity(new Intent(getActivity(), HomeActivity.class));
+        }
+        else
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+
     }
 
     @Nullable
@@ -69,7 +82,7 @@ public class LoginFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_login, container,false);
         ButterKnife.bind(this, view);
         setListeners();
-        getActivity().getActionBar().setTitle("");
+       // getActivity().getActionBar().setTitle("");
         //make underline
         forgetPassword.setText(Html.fromHtml(getString(R.string.forget_password)));
         validateEmailPass();
@@ -79,7 +92,6 @@ public class LoginFragment extends Fragment{
 
     private void Login() {
         login.setOnClickListener(view-> {
-            Auth = FirebaseAuth.getInstance();
             String inputEmail = email.getText().toString();
             String inputPassword = password.getText().toString();
             if (emailErrorText.getVisibility() != View.VISIBLE && PasswordErrorText.getVisibility() != View.VISIBLE) {
@@ -92,6 +104,9 @@ public class LoginFragment extends Fragment{
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = Auth.getCurrentUser();
                                     Toast.makeText(getContext(), "signInWithEmail:success", Toast.LENGTH_SHORT).show();
+                                    Intent i=new Intent(getActivity(), HomeActivity.class);
+                                    startActivity(i);
+
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Exception exception = task.getException();
@@ -170,7 +185,15 @@ public class LoginFragment extends Fragment{
         forgetPassword.setOnClickListener(view-> {
             if(communicator != null) {
                 //TODO: Change it to Forget password Fragment
-                communicator.launchFragment(new Fragment());
+                ForgetPasswordFragment fragment=new ForgetPasswordFragment();
+                communicator.launchFragment( fragment);
+            }
+        });
+        register.setOnClickListener(view-> {
+            if(communicator != null) {
+                //TODO: Change it to Forget password Fragment
+                RegisterFragment fragment=new RegisterFragment();
+                communicator.launchFragment( fragment);
             }
         });
     }
