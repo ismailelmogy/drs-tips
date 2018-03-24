@@ -1,3 +1,16 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
 build/android-profile/profile-2018-03-18-16-31-21-185.rawproto
 build/android-profile/profile-2018-03-18-16-31-21-185.json
+dr-tips.iml
+build/android-profile/profile-2018-03-24-14-01-38-032.rawproto
+build/android-profile/profile-2018-03-24-14-01-38-032.json
+build/android-profile/profile-2018-03-24-13-59-58-050.rawproto
+build/android-profile/profile-2018-03-24-13-59-58-050.json
+app/app.iml
+.idea/workspace.xml
+.idea/modules.xml
+.gradle/4.1/taskHistory/taskHistory.lock
+.gradle/4.1/taskHistory/taskHistory.bin
+.gradle/4.1/taskHistory/fileSnapshots.bin
+.gradle/4.1/fileHashes/fileHashes.lock
+.gradle/4.1/fileHashes/fileHashes.bin
