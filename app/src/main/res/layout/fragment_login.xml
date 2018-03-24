@@ -1,19 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-<TextView
-    android:id="@+id/hello_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+android:layout_alignParentTop="true"
+    android:layout_marginTop="30dp"
+    android:id="@+id/logo"
+    android:layout_centerInParent="true"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@drawable/logo"
+    android:layout_marginBottom="20dp"
+    />
+    <EditText
+    android:id="@+id/email"
+     android:layout_below="@+id/logo"
     android:layout_centerInParent="true"
     android:gravity="center"
-    android:text="HELLO FROM FRAGMENT"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    android:hint="E-mail"
+    android:inputType="textEmailSubject"
+    android:layout_width="350dp"
+    android:layout_height="40dp"
+    android:background="@drawable/text_view"
+    />
     <TextView
-        android:id="@+id/register_now_tv"
-        android:layout_below="@+id/hello_fragment"
+        android:id="@+id/emailerror"
+        android:layout_below="@+id/email"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:layout_marginBottom="10dp"/>
+    <EditText
+        android:id="@+id/password"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/emailerror"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/text_view"/>
+    <TextView
+        android:id="@+id/passworderror"
+        android:layout_below="@+id/password"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"/>
+
+    <TextView
+        android:id="@+id/forgetPassword"
         android:gravity="center"
         android:layout_margin="20dp"
-        android:text="@string/register_now"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/facebook"
+        android:textColor="#A4A4A4"
+        />
+    <Button
+        android:id="@+id/login"
+        android:layout_below="@+id/passworderror"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/login"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/facebook"
+        android:background="@color/blue"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/login"
+        android:drawableEnd="@drawable/ic_login_facebook"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/facebook_login"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginStart="400dp"
+        android:clickable="true"
+        android:layout_below="@+id/facebook"
+        app:srcCompat="@drawable/ic_login_float_button"
+        app:backgroundTint="@color/orange"
+        app:fabSize="normal"
+        android:layout_marginTop="100dp"/>
+
 </RelativeLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ocs.com.dr_tips">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".DrTipsApplication"
         android:allowBackup="true"
@@ -17,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.HomeActivity"/>
+
         <activity android:name=".activity.LoginActivity">
 
         </activity>
