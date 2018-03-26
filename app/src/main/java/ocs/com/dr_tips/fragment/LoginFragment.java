@@ -69,14 +69,6 @@ public class LoginFragment extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        Auth = FirebaseAuth.getInstance();
-        if (Auth.getCurrentUser() != null) {
-            startActivity(new Intent(getActivity(), HomeActivity.class));
-        }
-        else
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-
-
     }
 
     @Nullable
