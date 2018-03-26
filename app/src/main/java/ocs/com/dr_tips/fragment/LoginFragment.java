@@ -44,6 +44,7 @@ import ocs.com.dr_tips.activity.LoginActivity;
 public class LoginFragment extends Fragment{
 
 
+
     @BindView(R.id.forgetPassword)
     TextView forgetPassword;
     @BindView(R.id.email)
@@ -140,7 +141,7 @@ public class LoginFragment extends Fragment{
 
                 }
                 else
-                PasswordErrorText.setVisibility(View.GONE);
+                    PasswordErrorText.setVisibility(View.GONE);
 
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -208,8 +209,8 @@ public class LoginFragment extends Fragment{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-       inflater.inflate(R.menu.menu,menu);
-       super.onCreateOptionsMenu(menu,inflater);
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override

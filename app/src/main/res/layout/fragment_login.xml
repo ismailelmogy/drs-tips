@@ -4,26 +4,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
-android:layout_alignParentTop="true"
-    android:layout_marginTop="30dp"
-    android:id="@+id/logo"
-    android:layout_centerInParent="true"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:background="@drawable/logo"
-    android:layout_marginBottom="20dp"
-    />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/logo"
+        android:layout_centerInParent="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/logo"
+        android:layout_marginBottom="20dp"
+        />
     <EditText
-    android:id="@+id/email"
-     android:layout_below="@+id/logo"
-    android:layout_centerInParent="true"
-    android:gravity="center"
-    android:hint="E-mail"
-    android:inputType="textEmailSubject"
-    android:layout_width="350dp"
-    android:layout_height="40dp"
-    android:background="@drawable/text_view"
-    />
+        android:id="@+id/email"
+        android:layout_below="@+id/logo"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:hint="E-mail"
+        android:inputType="textEmailSubject"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:background="@drawable/text_view"
+        />
     <TextView
         android:id="@+id/emailerror"
         android:layout_below="@+id/email"
