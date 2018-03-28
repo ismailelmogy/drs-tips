@@ -6,7 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import ocs.com.dr_tips.R;
 import ocs.com.dr_tips.fragment.About_usFragment;
@@ -47,5 +51,18 @@ public class HomeActivity extends AppCompatActivity {
         });
         //Used to select an item programmatically
         bottomNavigationView.getMenu().getItem(0).setChecked(true);
+         getUserId();
+    }
+    public void getUserId(){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseAuth.AuthStateListener authListener = firebaseAuth -> {
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            if (firebaseUser != null) {
+                String userId = firebaseUser.getUid();
+                Log.wtf("Info"," UserId : "+firebaseUser.getUid()+" , DisplayName"+firebaseUser.getDisplayName());
+
+            }
+        };
+
     }
 }
