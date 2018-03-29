@@ -5,4 +5,5 @@ package ocs.com.dr_tips.model;
  */
 
 public class User {
+    private int id;
 }
