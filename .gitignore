@@ -8,3 +8,5 @@ gradle/
 local\.properties
 
 build/
+app/app.iml
+dr-tips.iml
