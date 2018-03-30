@@ -1,6 +1,5 @@
 package ocs.com.dr_tips.activity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,6 +19,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
     }
 
     private FirebaseAuth auth;
+    private ActivityResultCallback activityResultCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +46,22 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
         transaction.replace(R.id.fragment_container,new LoginFragment())
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (activityResultCallback != null) {
+            activityResultCallback.onActivityResultCalled(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
+    public void setActivityResultCallback(ActivityResultCallback callback) {
+        activityResultCallback = callback;
+    }
+
+    public interface ActivityResultCallback {
+        void onActivityResultCalled(int requestCode, int resultCode, Intent data);
     }
 }

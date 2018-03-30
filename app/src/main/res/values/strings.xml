@@ -6,9 +6,15 @@
     <string name="invalid_password">Password is not correct</string>
     <string name="login">Login</string>
     <string name="facebook_login">Login with Facebook</string>
+    <string-array name="fb_login_permissions" translatable="false">
+        <item>email</item>
+        <item>public_profile</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_login_error">Warning! Data is not retrieved.</string>
+    <string name="ok">Ok.</string>
 
 </resources>
 

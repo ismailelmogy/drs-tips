@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ocs.com.dr_tips.dataLayer.HomeAPI;
+import ocs.com.dr_tips.dataLayer.LoginAPI;
 import ocs.com.dr_tips.viewModel.HomeViewModel;
 import ocs.com.dr_tips.viewModel.LoginViewModel;
 
@@ -21,7 +22,7 @@ public class ViewModelModule {
 
     @Provides
     @Singleton
-    LoginViewModel providesLoginViewModel() {
-        return new LoginViewModelImpl();
+    LoginViewModel providesLoginViewModel(LoginAPI api) {
+        return new LoginViewModelImpl(api);
     }
 }
