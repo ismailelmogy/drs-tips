@@ -14,7 +14,7 @@ class LoginAPIImpl implements LoginAPI {
     }
 
     @Override
-    public Observable<User> getUserData(String uid) {
-        return service.getUserData(uid);
+    public Observable<User> getUserData(String uid, String tokenId) {
+        return service.getUserData(uid, tokenId);
     }
 }

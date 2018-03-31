@@ -9,6 +9,17 @@ import com.google.gson.annotations.SerializedName;
 public class User {
     @SerializedName("name")
     private String name;
+    @SerializedName("profile_pic")
+    private String profilePictureInBase64;
+
+    public String getProfilePictureInBase64() {
+        return profilePictureInBase64;
+    }
+
+    public void setProfilePictureInBase64(String profilePictureInBase64) {
+        this.profilePictureInBase64 = profilePictureInBase64;
+    }
+
     @SerializedName("country_id")
     private int countryId;
     @SerializedName("mobile_no")

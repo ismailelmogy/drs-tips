@@ -6,6 +6,8 @@
     <string name="invalid_password">Password is not correct</string>
     <string name="login">Login</string>
     <string name="facebook_login">Login with Facebook</string>
+    <string name="facebook_app_id">157169654948821</string>
+    <string name="fb_login_protocol_scheme">fb157169654948821</string>
     <string-array name="fb_login_permissions" translatable="false">
         <item>email</item>
         <item>public_profile</item>
@@ -15,6 +17,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="facebook_login_error">Warning! Data is not retrieved.</string>
     <string name="ok">Ok.</string>
+    <string name="facebook_login_cancel">You canceled your facebook login</string>
+    <string name="login_failed">Can\'t log you into the app, please try again later</string>
 
 </resources>
 

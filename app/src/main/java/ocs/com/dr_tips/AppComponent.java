@@ -1,6 +1,9 @@
 package ocs.com.dr_tips;
+
 import javax.inject.Singleton;
+
 import dagger.Component;
+import ocs.com.dr_tips.activity.LoginActivity;
 import ocs.com.dr_tips.fragment.LoginFragment;
 
 /**
@@ -11,4 +14,6 @@ import ocs.com.dr_tips.fragment.LoginFragment;
 public interface AppComponent {
     void inject (DrTipsApplication app);
     void inject (LoginFragment loginFragment);
+
+    void inject(LoginActivity loginActivity);
 }

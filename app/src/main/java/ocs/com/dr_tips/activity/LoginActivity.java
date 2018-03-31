@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import javax.inject.Inject;
+
+import ocs.com.dr_tips.DrTipsApplication;
 import ocs.com.dr_tips.R;
 import ocs.com.dr_tips.fragment.LoginFragment;
+import ocs.com.dr_tips.fragment.RegisterFragment;
+import ocs.com.dr_tips.util.AppDataHolder;
+import ocs.com.dr_tips.util.DialogMaker;
+import ocs.com.dr_tips.viewModel.LoginViewModel;
 
-public class LoginActivity extends AppCompatActivity implements LoginFragment.LoginFragmentCommunicator{
+public class LoginActivity extends DrsTipsBaseActivity implements LoginFragment.LoginFragmentCommunicator{
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
@@ -21,13 +28,17 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
     private FirebaseAuth auth;
     private ActivityResultCallback activityResultCallback;
 
+    @Inject
+    LoginViewModel loginViewModel;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ((DrTipsApplication)getApplication()).getComponent().inject(this);
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(this, HomeActivity.class));
+            subscribeToGetUserData();
         }
         else
             launchLoginFragment();
@@ -39,11 +50,38 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
         transaction.add(R.id.fragment_container,new LoginFragment()).commitAllowingStateLoss();
     }
 
+    private void subscribeToGetUserData() {
+        if(auth.getCurrentUser() != null) {
+            showProgressDialog();
+            loginViewModel.getUserData(auth.getCurrentUser().getUid()).subscribe(user -> {
+                dismissProgressDialog();
+                if (user != null){
+                    AppDataHolder.getInstance().setLoggedInUser(user);
+                    startActivity(new Intent(this,HomeActivity.class));
+                    finish();
+                } else {
+                    launchFragment(new RegisterFragment());
+                }
+            },throwable -> {
+                //TODO: handle errors
+                dismissProgressDialog();
+                DialogMaker.makeDialog(this, getString(R.string.login_failed), getString(R.string.ok),
+                        (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                Log.e("DRERROR",throwable.toString());
+                launchLoginFragment();
+            });
+        } else {
+            DialogMaker.makeDialog(this, getString(R.string.login_failed), getString(R.string.ok),
+                    (dialogInterface, i) -> dialogInterface.dismiss()).show();
+            launchLoginFragment();
+        }
+    }
+
     @Override
     public void launchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_container,new LoginFragment())
+        transaction.replace(R.id.fragment_container,fragment)
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
     }

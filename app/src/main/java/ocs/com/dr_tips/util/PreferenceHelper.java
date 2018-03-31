@@ -10,28 +10,9 @@ import android.preference.PreferenceManager;
 
 public class PreferenceHelper {
     private Context context;
-    private static final String EMAIL = "email";
-    private static final String PASSWORD = "password";
 
     public PreferenceHelper(Context context) {
         this.context = context;
-    }
-
-    public void setEmail(String email) {
-        set(EMAIL, email);
-    }
-
-    public String getEmail() {
-        return get(EMAIL, "");
-    }
-
-
-    public void setPassword(String password) {
-        set(PASSWORD, password);
-    }
-
-    public String getPassword() {
-        return get(PASSWORD, "");
     }
 
     private void set(String key, String value) {

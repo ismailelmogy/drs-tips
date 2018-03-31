@@ -3,7 +3,6 @@ package ocs.com.dr_tips.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -29,13 +28,9 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 
@@ -48,6 +43,7 @@ import ocs.com.dr_tips.DrTipsApplication;
 import ocs.com.dr_tips.R;
 import ocs.com.dr_tips.activity.HomeActivity;
 import ocs.com.dr_tips.activity.LoginActivity;
+import ocs.com.dr_tips.util.AppDataHolder;
 import ocs.com.dr_tips.util.DialogMaker;
 import ocs.com.dr_tips.viewModel.LoginViewModel;
 
@@ -55,7 +51,7 @@ import ocs.com.dr_tips.viewModel.LoginViewModel;
  * Created by Randa on 3/18/2018.
  */
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends DrsTipsBaseFragment {
     @BindView(R.id.forgetPassword)
     TextView forgetPassword;
     @BindView(R.id.email)
@@ -106,25 +102,19 @@ public class LoginFragment extends Fragment {
             String inputPassword = password.getText().toString();
             if (emailErrorText.getVisibility() != View.VISIBLE && PasswordErrorText.getVisibility() != View.VISIBLE) {
                 //authenticate user
+                showProgressDialog();
                 auth.signInWithEmailAndPassword(inputEmail, inputPassword)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = auth.getCurrentUser();
-                                    Toast.makeText(getContext(), "signInWithEmail:success", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(getActivity(), HomeActivity.class);
-                                    startActivity(i);
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Exception exception = task.getException();
-                                    if (exception instanceof FirebaseAuthInvalidUserException)
-                                        Toast.makeText(getContext(), R.string.unfound_user, Toast.LENGTH_SHORT).show();
-                                    else if (exception instanceof FirebaseAuthInvalidCredentialsException)
-                                        Toast.makeText(getContext(), R.string.invalid_password, Toast.LENGTH_SHORT).show();
-                                }
+                        .addOnCompleteListener(task -> {
+                            dismissProgressDialog();
+                            if (task.isSuccessful()) {
+                                subscribeToGetUserData();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Exception exception = task.getException();
+                                if (exception instanceof FirebaseAuthInvalidUserException)
+                                    Toast.makeText(getContext(), R.string.unfound_user, Toast.LENGTH_SHORT).show();
+                                else if (exception instanceof FirebaseAuthInvalidCredentialsException)
+                                    Toast.makeText(getContext(), R.string.invalid_password, Toast.LENGTH_SHORT).show();
                             }
                         });
             } else
@@ -149,12 +139,13 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void onCancel() {
-
+                Toast.makeText(getContext(), R.string.facebook_login_cancel, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-
+                DialogMaker.makeDialog(getContext(), getString(R.string.facebook_login_error), getString(R.string.ok),
+                        (dialogInterface, i) -> dialogInterface.dismiss()).show();
             }
         });
     }
@@ -170,15 +161,26 @@ public class LoginFragment extends Fragment {
 
     private void subscribeToGetUserData() {
         if(auth.getCurrentUser() != null) {
+            showProgressDialog();
             viewModel.getUserData(auth.getCurrentUser().getUid()).subscribe(user -> {
+                dismissProgressDialog();
                 if (user != null){
-                    //TODO: Login Successful => go to home page
+                    AppDataHolder.getInstance().setLoggedInUser(user);
+                    startActivity(new Intent(getContext(),HomeActivity.class));
+                    getActivity().finish();
                 } else {
-                    //TODO: User is not registered => go to Registration
+                    communicator.launchFragment(new RegisterFragment());
                 }
             },throwable -> {
-               //TODO: handle errors
+                //TODO: handle errors
+                dismissProgressDialog();
+                DialogMaker.makeDialog(getContext(), getString(R.string.login_failed), getString(R.string.ok),
+                        (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                Log.e("DRERROR",throwable.toString());
             });
+        } else {
+            DialogMaker.makeDialog(getContext(), getString(R.string.login_failed), getString(R.string.ok),
+                    (dialogInterface, i) -> dialogInterface.dismiss()).show();
         }
     }
 
