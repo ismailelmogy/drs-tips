@@ -5,4 +5,19 @@ package ocs.com.dr_tips.model;
  */
 
 public class User {
+    private String name;
+    private boolean isVerified;
+
+    public String getName() {
+        return name;
+    }
+    public void setName(){
+        this.name=name;
+    }
+    public boolean getIsVerified(){
+        return isVerified;
+    }
+    public void setVerified(){
+        this.isVerified=isVerified;
+    }
 }
