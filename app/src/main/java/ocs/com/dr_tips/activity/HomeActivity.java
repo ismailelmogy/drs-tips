@@ -6,9 +6,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
+import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import javax.inject.Inject;
@@ -39,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ((DrTipsApplication)getApplication()).getComponent().inject(this);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#CC2EFA'>Home </font>"));
         GetUserData();
         BottomNavigationView bottomNavigationView=findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
