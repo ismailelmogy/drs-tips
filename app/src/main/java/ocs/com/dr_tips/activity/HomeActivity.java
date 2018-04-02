@@ -42,24 +42,22 @@ public class HomeActivity extends AppCompatActivity {
         GetUserData();
         BottomNavigationView bottomNavigationView=findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            final Fragment[] selectedFragment = {null};
+
             switch (item.getItemId()) {
                 case R.id.action_item1:
                    GetUserData();
-                   return true;
+                   break;
                 case R.id.action_item2:
-                    selectedFragment[0] = ProfileFragment.newInstance();
+                   launchFragment(ProfileFragment.newInstance());
                     break;
                 case R.id.action_item3:
-                    selectedFragment[0] = About_usFragment.newInstance();
+                   launchFragment(About_usFragment.newInstance());
                     break;
                 case R.id.action_item4:
-                    selectedFragment[0] = SettingsFragment.newInstance();
+                    launchFragment(SettingsFragment.newInstance());
                     break;
             }
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, selectedFragment[0]);
-            transaction.commit();
+
             return true;
         });
         //Used to select an item programmatically
@@ -68,8 +66,7 @@ public class HomeActivity extends AppCompatActivity {
 
        public void GetUserData(){
            auth = FirebaseAuth.getInstance();
-           FirebaseAuth.AuthStateListener authListener = firebaseAuth -> {
-               FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+               FirebaseUser firebaseUser = auth.getCurrentUser();
                if (firebaseUser!= null) {
                    String userId = firebaseUser.getUid();
                    Log.d("Info"," UserId : "+firebaseUser.getUid()+" , DisplayName"+firebaseUser.getDisplayName());
@@ -90,14 +87,13 @@ public class HomeActivity extends AppCompatActivity {
 
                    Log.e("Drtips ERROR","Firebase user = null");
                }
-           };
+
         }
 
     public void launchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container,fragment)
-                .addToBackStack(null)
                 .commitAllowingStateLoss();
     }
 }
