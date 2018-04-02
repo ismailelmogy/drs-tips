@@ -6,6 +6,7 @@
     <string name="invalid_password">Password is not correct</string>
     <string name="login">Login</string>
     <string name="facebook_login">Login with Facebook</string>
+    <string name="drezz_tips"> Dr.Ezz El Dine Tips</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
