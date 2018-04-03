@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,6 +22,8 @@ import ocs.com.dr_tips.util.DialogMaker;
 import ocs.com.dr_tips.viewModel.LoginViewModel;
 
 public class LoginActivity extends DrsTipsBaseActivity implements LoginFragment.LoginFragmentCommunicator{
+    private static final String TAG = "tag";
+
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
@@ -47,7 +50,7 @@ public class LoginActivity extends DrsTipsBaseActivity implements LoginFragment.
     private void launchLoginFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_container,new LoginFragment()).commitAllowingStateLoss();
+        transaction.add(R.id.fragment_container,new LoginFragment(),TAG).commitAllowingStateLoss();
     }
 
     private void subscribeToGetUserData() {
@@ -81,9 +84,27 @@ public class LoginActivity extends DrsTipsBaseActivity implements LoginFragment.
     public void launchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_container,fragment)
-                .addToBackStack(null)
+        transaction.replace(R.id.fragment_container,fragment,TAG)
                 .commitAllowingStateLoss();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().findFragmentByTag(TAG) instanceof LoginFragment) {
+            super.onBackPressed();
+        }
+        else {
+            launchLoginFragment();
+        }
     }
 
     @Override

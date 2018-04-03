@@ -1,9 +1,12 @@
 package ocs.com.dr_tips.activity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v13.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.MenuItem;
@@ -64,5 +67,29 @@ public class DrsTipsBaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    public boolean askForWriteExternalStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                boolean showPermission = false;
+                for (int permission : grantResults) {
+                    if (permission != PackageManager.PERMISSION_GRANTED)
+                        showPermission = true;
+                } if (showPermission) {
+                    askForWriteExternalStoragePermission();
+                }
+            }
+        }
     }
 }

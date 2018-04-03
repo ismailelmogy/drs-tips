@@ -20,8 +20,8 @@ public class User {
         this.profilePictureInBase64 = profilePictureInBase64;
     }
 
-    @SerializedName("country_id")
-    private int countryId;
+    @SerializedName("country_code")
+    private String countryCode;
     @SerializedName("mobile_no")
     private String mobileNumber;
     @SerializedName("speciality")
@@ -43,12 +43,12 @@ public class User {
         this.name = name;
     }
 
-    public int getCountryId() {
-        return countryId;
+    public String getCountryId() {
+        return countryCode;
     }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public void setCountryId(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public String getMobileNumber() {

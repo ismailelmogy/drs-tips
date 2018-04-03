@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ocs.com.dr_tips.activity.LoginActivity;
 import ocs.com.dr_tips.fragment.LoginFragment;
+import ocs.com.dr_tips.fragment.RegisterFragment;
 
 /**
  * Created by Randa on 3/18/2018.
@@ -16,4 +17,6 @@ public interface AppComponent {
     void inject (LoginFragment loginFragment);
 
     void inject(LoginActivity loginActivity);
+
+    void inject(RegisterFragment registerFragment);
 }
