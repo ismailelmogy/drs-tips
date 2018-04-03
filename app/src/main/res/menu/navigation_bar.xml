@@ -4,18 +4,18 @@
     android:layout_height="50dp">
     <item
         android:id="@+id/action_item1"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/nav_home"
         android:title="home"/>
     <item
         android:id="@+id/action_item2"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/nav_user"
         android:title="profile"/>
     <item
         android:id="@+id/action_item3"
-        android:icon="@drawable/ic_about"
+        android:icon="@drawable/nav_info"
         android:title="about"/>
     <item
         android:id="@+id/action_item4"
-        android:icon="@drawable/ic_setting"
+        android:icon="@drawable/nav_settings"
         android:title="settings"/>
 </menu>
