@@ -12,6 +12,11 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/navigation"
         android:animateLayoutChanges="true"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/navigation"
+        android:background="@color/colorPrimaryDark"></View>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
