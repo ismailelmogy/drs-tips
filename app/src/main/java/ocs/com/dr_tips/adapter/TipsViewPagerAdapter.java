@@ -26,17 +26,14 @@ import static java.lang.Integer.parseInt;
  */
 
 public class TipsViewPagerAdapter  extends PagerAdapter {
-    private HashMap <String,Tip> tips;
+    private ArrayList <Tip> tips;
     private Context context;
-    private LayoutInflater layoutInflater;
     Set<String> keys;
     String[] keyArray;
 
-    public TipsViewPagerAdapter(Context context , HashMap<String,Tip> tips){
+    public TipsViewPagerAdapter(Context context , ArrayList<Tip> tips){
         this.context=context;
         this.tips=tips;
-        this.keys = tips.keySet();
-        this.keyArray = keys.toArray(new String[keys.size()]);
     }
     @Override
     public int getCount() {
@@ -49,12 +46,12 @@ public class TipsViewPagerAdapter  extends PagerAdapter {
     }
     @Override
     public Object instantiateItem(ViewGroup container , int position){
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = layoutInflater.inflate(R.layout.tip,container,false);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.tipImageId);
         TextView textView = (TextView) itemView.findViewById(R. id.tipTextId);
-        imageView.setImageBitmap(tips.get(this.keyArray[position]).getBitmapImg());
-        textView.setText(tips.get(this.keyArray[position]).getText());
+        imageView.setImageBitmap(tips.get(position).getBitmapImg());
+        textView.setText(tips.get(position).getText());
         container.addView(itemView);
         return itemView;
     }

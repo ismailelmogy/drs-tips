@@ -8,12 +8,12 @@ import ocs.com.dr_tips.R;
 import ocs.com.dr_tips.fragment.TipsHomeFragment;
 
 public class HomeActivity extends AppCompatActivity {
-    FragmentManager manager = getSupportFragmentManager();
-    TipsHomeFragment tipsHomeFragment = new TipsHomeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FragmentManager manager = getSupportFragmentManager();
+        TipsHomeFragment tipsHomeFragment = new TipsHomeFragment();
         setContentView(R.layout.activity_home);
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.fragmentContainer,tipsHomeFragment,"tipsFragment");
