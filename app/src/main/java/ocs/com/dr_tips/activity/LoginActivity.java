@@ -41,7 +41,7 @@ public class LoginActivity extends DrsTipsBaseActivity implements LoginFragment.
         ((DrTipsApplication)getApplication()).getComponent().inject(this);
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            subscribeToGetUserData();
+            getUserData();
         }
         else
             launchLoginFragment();
@@ -50,10 +50,10 @@ public class LoginActivity extends DrsTipsBaseActivity implements LoginFragment.
     private void launchLoginFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_container,new LoginFragment(),TAG).commitAllowingStateLoss();
+        transaction.replace(R.id.fragment_container,new LoginFragment(),TAG).commitAllowingStateLoss();
     }
 
-    private void subscribeToGetUserData() {
+    private void getUserData() {
         if(auth.getCurrentUser() != null) {
             showProgressDialog();
             loginViewModel.getUserData(auth.getCurrentUser().getUid()).subscribe(user -> {

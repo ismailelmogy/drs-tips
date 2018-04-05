@@ -1,5 +1,6 @@
 package ocs.com.dr_tips.viewModel.impl;
 
+import android.content.Context;
 import android.util.Patterns;
 
 import com.facebook.AccessToken;
@@ -7,11 +8,18 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import ocs.com.dr_tips.R;
 import ocs.com.dr_tips.dataLayer.LoginAPI;
+import ocs.com.dr_tips.model.Country;
 import ocs.com.dr_tips.model.User;
 import ocs.com.dr_tips.viewModel.LoginViewModel;
 import rx.Completable;
@@ -127,6 +135,20 @@ class LoginViewModelImpl extends BaseViewModelImpl implements LoginViewModel {
                 }
             });
         });
+    }
+
+    @Override
+    public List<Country> getCountriesDataFromJson(Context context) throws IOException {
+        InputStream inputStream = context.getAssets().open("countries.json");
+        int size = inputStream.available();
+        byte[] buffer = new byte[size];
+        inputStream.read(buffer);
+        inputStream.close();
+        String json = new String(buffer,"UTF-8");
+        Type TYPE = new TypeToken<List<Country>>(){}.getType();
+        Gson gson = new Gson();
+
+        return gson.fromJson(json,TYPE);
     }
 
     private Observable<User> getUserData(String uid,String tokenId){

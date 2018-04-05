@@ -1,9 +1,14 @@
 package ocs.com.dr_tips.viewModel;
 
+import android.content.Context;
 import android.support.annotation.StringRes;
 
 import com.facebook.AccessToken;
 
+import java.io.IOException;
+import java.util.List;
+
+import ocs.com.dr_tips.model.Country;
 import ocs.com.dr_tips.model.User;
 import rx.Completable;
 import rx.Observable;
@@ -31,5 +36,6 @@ public interface LoginViewModel {
 
     Completable registerWithEmailAndPassword(String email,String password);
 
+    List<Country> getCountriesDataFromJson(Context context) throws IOException;
 
 }

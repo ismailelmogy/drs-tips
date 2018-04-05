@@ -89,6 +89,7 @@ public class LoginFragment extends DrsTipsBaseFragment {
         auth = FirebaseAuth.getInstance();
         setupFacebookLogin();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         //make underline
         forgetPassword.setText(Html.fromHtml(getString(R.string.forget_password)));
         validateEmailPass();
@@ -107,7 +108,7 @@ public class LoginFragment extends DrsTipsBaseFragment {
                         .addOnCompleteListener(task -> {
                             dismissProgressDialog();
                             if (task.isSuccessful()) {
-                                subscribeToGetUserData();
+                                getUserData();
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Exception exception = task.getException();
@@ -127,6 +128,11 @@ public class LoginFragment extends DrsTipsBaseFragment {
     void loginWithFacebook() {
         LoginManager.getInstance().logInWithReadPermissions(this
                 , Arrays.asList(getResources().getStringArray(R.array.fb_login_permissions)));
+    }
+
+    @OnClick(R.id.fab_btn)
+    void register(){
+        communicator.launchFragment(new RegisterFragment());
     }
 
     private void setupFacebookLogin() {
@@ -152,14 +158,14 @@ public class LoginFragment extends DrsTipsBaseFragment {
 
     private void subscribeToFacebookLogin(AccessToken accessToken) {
 
-        viewModel.loginWithFacebook(accessToken).subscribe(this::subscribeToGetUserData, throwable -> {
+        viewModel.loginWithFacebook(accessToken).subscribe(this::getUserData, throwable -> {
             DialogMaker.makeDialog(getContext(), getString(R.string.facebook_login_error)
                     , getString(R.string.ok), (dialogInterface, i) -> dialogInterface.dismiss()).show();
             Log.e("DRERROR",throwable.toString());
         });
     }
 
-    private void subscribeToGetUserData() {
+    private void getUserData() {
         if(auth.getCurrentUser() != null) {
             showProgressDialog();
             viewModel.getUserData(auth.getCurrentUser().getUid()).subscribe(user -> {

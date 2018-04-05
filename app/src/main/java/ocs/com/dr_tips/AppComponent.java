@@ -1,10 +1,13 @@
 package ocs.com.dr_tips;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
 import ocs.com.dr_tips.activity.LoginActivity;
 import ocs.com.dr_tips.fragment.LoginFragment;
+import ocs.com.dr_tips.fragment.PickImageDialogFragment;
 import ocs.com.dr_tips.fragment.RegisterFragment;
 
 /**
@@ -19,4 +22,6 @@ public interface AppComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(RegisterFragment registerFragment);
+
+    void inject(@NotNull PickImageDialogFragment pickImageDialogFragment);
 }

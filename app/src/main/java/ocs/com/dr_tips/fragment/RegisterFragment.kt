@@ -1,11 +1,9 @@
 package ocs.com.dr_tips.fragment
 
 
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -14,15 +12,12 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.assist.FailReason
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener
 import kotlinx.android.synthetic.main.fragment_register.*
 import ocs.com.dr_tips.DrTipsApplication
 import ocs.com.dr_tips.R
-import ocs.com.dr_tips.activity.DrsTipsBaseActivity
 import ocs.com.dr_tips.activity.HomeActivity
 import ocs.com.dr_tips.adapter.CountriesHintArrayAdapter
 import ocs.com.dr_tips.model.Country
@@ -30,21 +25,19 @@ import ocs.com.dr_tips.model.User
 import ocs.com.dr_tips.util.DialogMaker
 import ocs.com.dr_tips.util.Utils
 import ocs.com.dr_tips.viewModel.LoginViewModel
-import java.nio.charset.Charset
 import javax.inject.Inject
 
 
 class RegisterFragment : DrsTipsBaseFragment() {
-    private val CAMERA_REQUEST: Int = 1
-    private val GALLERY_REQUEST: Int = 2
+
     private val registeredUser: User = User()
     private var countriesData: MutableList<Country> = ArrayList()
 
     @Inject
     lateinit var loginViewModel: LoginViewModel
-    @Inject
-    lateinit var imageLoader: ImageLoader
 
+    @Inject
+    lateinit var imageLoader : ImageLoader
     val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -115,15 +108,12 @@ class RegisterFragment : DrsTipsBaseFragment() {
         }
 
         choosePhotoView.setOnClickListener {
-            val imagePicker = PickImageDialogFragment.newInstance {
-                if ((activity as DrsTipsBaseActivity).askForWriteExternalStoragePermission()) {
-                    if (it) {
-                        openCamera()
-                    } else {
-                        openGallery()
-                    }
+            val imagePicker = PickImageDialogFragment.newInstance(object: PickImageDialogFragment.OnImagePickedListener{
+                override fun onImagePicked(selectedImage: Bitmap) {
+                    profilePhotoImageView.setImageBitmap(selectedImage)
+                    registeredUser.profilePictureInBase64 = Utils.encodeToBase64String(selectedImage)
                 }
-            }
+            })
             imagePicker.show(childFragmentManager, "TAG")
         }
 
@@ -142,19 +132,9 @@ class RegisterFragment : DrsTipsBaseFragment() {
 
     private fun loadCountriesSpinner() {
         try {
-            val inputStream = context?.assets?.open("countries.json")
-            val size = inputStream?.available()
-            val buffer = size?.let { ByteArray(it) }
-            inputStream?.read(buffer)
-            inputStream?.close()
-            val json = buffer?.let { String(it, Charset.forName("UTF-8")) }
-
-            val TYPE = object : TypeToken<List<Country>>() {}.type
-            val gson = Gson()
-
-            val data: MutableList<Country> = gson.fromJson(json, TYPE)
+            val data = loginViewModel.getCountriesDataFromJson(context)
             data.sortBy { it.name }
-            data.add(0,Country(getString(R.string.country)))
+            data.add(0, Country(getString(R.string.country)))
             countriesData.addAll(data)
             val adapter = CountriesHintArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1, data)
             countrySpinner.adapter = adapter
@@ -247,33 +227,6 @@ class RegisterFragment : DrsTipsBaseFragment() {
             countryErrorText.visibility = GONE
         }
         return isError
-    }
-
-    private fun openGallery() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Photo"), GALLERY_REQUEST)
-    }
-
-    private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, CAMERA_REQUEST)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK) {
-            if (requestCode == CAMERA_REQUEST) {
-                Utils.fixMediaDir()
-                val profilePic = data?.extras?.get("data") as Bitmap
-                profilePhotoImageView.setImageBitmap(profilePic)
-                registeredUser.profilePictureInBase64 = Utils.encodeToBase64String(profilePic)
-            } else if (requestCode == GALLERY_REQUEST) {
-                val imageUri = data?.data
-                imageLoader.displayImage(imageUri.toString(), profilePhotoImageView)
-            }
-        }
     }
 
 }
