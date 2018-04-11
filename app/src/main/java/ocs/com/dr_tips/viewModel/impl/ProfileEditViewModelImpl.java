@@ -5,9 +5,13 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.HashMap;
+
 import ocs.com.dr_tips.dataLayer.ProfileEditAPI;
 import ocs.com.dr_tips.viewModel.ProfileEditViewModel;
 import rx.Completable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 class ProfileEditViewModelImpl extends BaseViewModelImpl implements ProfileEditViewModel {
     private ProfileEditAPI api;
@@ -34,6 +38,16 @@ class ProfileEditViewModelImpl extends BaseViewModelImpl implements ProfileEditV
     @Override
     public Completable changePassword(String oldPassword, String newPassword) {
         return reauthenticateUser(oldPassword).andThen(changePassword(newPassword));
+    }
+
+    @Override
+    public Completable editProfile(HashMap<String, String> edit) {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            return getToken(currentUser).flatMapCompletable(token -> editProfile(edit,currentUser.getUid(),token))
+                    .toCompletable();
+        }
+        return Completable.error(new Throwable("FirebaseUser = null"));
     }
 
     private Completable reauthenticateUser(String oldPassword) {
@@ -63,5 +77,9 @@ class ProfileEditViewModelImpl extends BaseViewModelImpl implements ProfileEditV
         } else {
             return Completable.error(new Throwable("FirebaseUser == null"));
         }
+    }
+
+    private Completable editProfile(HashMap<String,String> edit,String userId,String tokenId){
+        return api.editProfile(edit, userId, tokenId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }
