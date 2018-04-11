@@ -7,9 +7,50 @@
     <string name="login">Login</string>
     <string name="facebook_login">Login with Facebook</string>
     <string name="drezz_tips"> Dr.Ezz El Dine Tips</string>
+    <string name="facebook_app_id">157169654948821</string>
+    <string name="fb_login_protocol_scheme">fb157169654948821</string>
+    <string-array name="fb_login_permissions" translatable="false">
+        <item>email</item>
+        <item>public_profile</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_login_error">Warning! Data is not retrieved.</string>
+    <string name="ok">OK.</string>
+    <string name="facebook_login_cancel">You canceled your facebook login</string>
+    <string name="login_failed">Can\'t log you into the app, please try again later</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="mobile">Mobile</string>
+    <string name="speciality">Speciality</string>
+    <string name="place_of_work">Place of work</string>
+    <string name="title">Title</string>
+    <string name="register">Register</string>
+    <string name="empty_email">Email is empty!</string>
+    <string name="wrong_email">Warning! This is not an email..</string>
+    <string name="password_short">Password length should be of 8 characters long at least.</string>
+    <string name="password_mismatch">Passwords mismatch!</string>
+    <string name="empty_name">Name is empty!</string>
+    <string name="wrong_mobile">Mobile number should hold only 1 +</string>
+
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="dialog_select_image">Take a picture or select from Gallery</string>
+    <string name="email_exists">Warning! This email is already registered.</string>
+    <string name="register_failed">Can\'t register your account at the moment, please try again later!</string>
+    <string name="country">Country</string>
+    <string name="country_not_selected">Please choose a country!</string>
+    <string name="registration">Registration</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="update">Update</string>
+    <string name="change_password">Change Password</string>
+    <string name="save_data_error">There is some error happened, your data is not saved</string>
+    <string name="wrong_old_password">Old Password is wrong</string>
 
 </resources>
 

@@ -5,7 +5,11 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ocs.com.dr_tips.dataLayer.HomeAPI;
+import ocs.com.dr_tips.dataLayer.LoginAPI;
+import ocs.com.dr_tips.dataLayer.ProfileEditAPI;
 import ocs.com.dr_tips.networkService.HomeService;
+import ocs.com.dr_tips.networkService.LoginService;
+import ocs.com.dr_tips.networkService.ProfileEditService;
 import ocs.com.dr_tips.util.RetrofitFactory;
 
 /**
@@ -24,5 +28,29 @@ public class DataLayerModule {
     @Singleton
     HomeAPI providesHomeAPI (HomeService service) {
         return new HomeAPIImpl(service);
+    }
+
+    @Provides
+    @Singleton
+    LoginService providesLoginService() {
+        return RetrofitFactory.createService(LoginService.class);
+    }
+
+    @Provides
+    @Singleton
+    LoginAPI providesLoginAPI (LoginService service) {
+        return new LoginAPIImpl(service);
+    }
+
+    @Provides
+    @Singleton
+    ProfileEditService providesProfileEditService() {
+        return RetrofitFactory.createService(ProfileEditService.class);
+    }
+
+    @Provides
+    @Singleton
+    ProfileEditAPI providesProfileEditAPI (ProfileEditService service) {
+        return new ProfileEditAPIImpl(service);
     }
 }
