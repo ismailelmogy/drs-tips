@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    tools:context=".fragment.EditProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/emailView"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/edit_text_background"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                app:srcCompat="@drawable/register_email" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:ems="15"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/emailErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/specialityView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:background="@color/edit_text_background"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            app:srcCompat="@drawable/register_speciality" />
+
+        <EditText
+            android:id="@+id/specialityEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:ems="15"
+            android:hint="@string/speciality"
+            android:inputType="text"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/workPlaceView"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/edit_text_background"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            app:srcCompat="@drawable/register_place_of_work" />
+
+        <EditText
+            android:id="@+id/workPlaceEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:ems="15"
+            android:hint="@string/place_of_work"
+            android:inputType="text"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="5dp"
+        android:background="@color/edit_text_background"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                app:srcCompat="@drawable/register_name" />
+
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:ems="15"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/nameErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/orange"
+        android:text="@string/update"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

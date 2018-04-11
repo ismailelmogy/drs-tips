@@ -19,8 +19,10 @@ import javax.inject.Inject
 
 class ChangePasswordFragment : DrsTipsBaseFragment() {
 
-    @Inject lateinit var loginViewModel: LoginViewModel
-    @Inject lateinit var profileEditViewModel: ProfileEditViewModel
+    @Inject
+    lateinit var loginViewModel: LoginViewModel
+    @Inject
+    lateinit var profileEditViewModel: ProfileEditViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +30,7 @@ class ChangePasswordFragment : DrsTipsBaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-            = inflater.inflate(R.layout.fragment_change_password, container, false)
+                              savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.fragment_change_password, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +40,7 @@ class ChangePasswordFragment : DrsTipsBaseFragment() {
         confirmPasswordTIL.editText?.transformationMethod = PasswordTransformationMethod()
 
         changePasswordButton.setOnClickListener {
-            if (checkInputs()){
+            if (checkInputs()) {
                 subscribeToChangePassword()
             }
         }
@@ -47,21 +48,20 @@ class ChangePasswordFragment : DrsTipsBaseFragment() {
 
     private fun subscribeToChangePassword() {
         showProgressDialog()
-        profileEditViewModel.changePassword(oldPasswordTIL.editText?.text.toString(),newPasswordTIL.editText?.text.toString())
+        profileEditViewModel.changePassword(oldPasswordTIL.editText?.text.toString(), newPasswordTIL.editText?.text.toString())
                 .subscribe({
                     dismissProgressDialog()
                     activity?.onBackPressed()
-                },{
+                }, {
                     dismissProgressDialog()
-                    if (it is FirebaseAuthInvalidCredentialsException){
-                        DialogMaker.makeDialog(context,getString(R.string.wrong_old_password),getString(R.string.ok),{
-                            dialogInterface:DialogInterface,view:Int -> dialogInterface.dismiss()
-                        }).show()
+                    val errorMessage = if (it is FirebaseAuthInvalidCredentialsException) {
+                        getString(R.string.wrong_old_password)
                     } else {
-                        DialogMaker.makeDialog(context,getString(R.string.save_data_error),getString(R.string.ok),{
-                            dialogInterface:DialogInterface,view:Int -> dialogInterface.dismiss()
-                        }).show()
+                        getString(R.string.save_data_error)
                     }
+                    DialogMaker.makeDialog(context, errorMessage, getString(R.string.ok), { dialogInterface: DialogInterface, view: Int ->
+                        dialogInterface.dismiss()
+                    }).show()
                 })
     }
 
@@ -70,21 +70,21 @@ class ChangePasswordFragment : DrsTipsBaseFragment() {
         val passwordValidation = loginViewModel.checkPassword(oldPasswordTIL.editText?.text.toString())
         val newPasswordValidation = loginViewModel.checkPassword(newPasswordTIL.editText?.text.toString())
         val newPasswordConfirmationValidation = loginViewModel.isPasswordConfirmed(newPasswordTIL.editText?.text.toString()
-                ,confirmPasswordTIL.editText?.text.toString())
+                , confirmPasswordTIL.editText?.text.toString())
 
-        if(passwordValidation != R.string.ok){
+        if (passwordValidation != R.string.ok) {
             isValid = false
             oldPasswordTIL.error = getString(passwordValidation)
         } else {
             oldPasswordTIL.isErrorEnabled = false
         }
-        if(newPasswordValidation != R.string.ok){
+        if (newPasswordValidation != R.string.ok) {
             isValid = false
             newPasswordTIL.error = getString(newPasswordValidation)
         } else {
             newPasswordTIL.isErrorEnabled = false
         }
-        if(newPasswordConfirmationValidation != R.string.ok){
+        if (newPasswordConfirmationValidation != R.string.ok) {
             isValid = false
             confirmPasswordTIL.error = getString(newPasswordConfirmationValidation)
         } else {
