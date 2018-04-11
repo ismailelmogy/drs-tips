@@ -78,7 +78,9 @@ public class LoginFragment extends DrsTipsBaseFragment {
         super.onCreate(savedInstanceState);
         ((DrTipsApplication)getActivity().getApplication()).getComponent().inject(this);
         setHasOptionsMenu(true);
+        auth = FirebaseAuth.getInstance();
     }
+
 
     @Nullable
     @Override

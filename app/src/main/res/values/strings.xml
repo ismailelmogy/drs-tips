@@ -6,6 +6,7 @@
     <string name="invalid_password">Password is not correct</string>
     <string name="login">Login</string>
     <string name="facebook_login">Login with Facebook</string>
+    <string name="drezz_tips"> Dr.Ezz El Dine Tips</string>
     <string name="facebook_app_id">157169654948821</string>
     <string name="fb_login_protocol_scheme">fb157169654948821</string>
     <string-array name="fb_login_permissions" translatable="false">
