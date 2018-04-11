@@ -8,10 +8,11 @@ import dagger.Component;
 import ocs.com.dr_tips.activity.HomeActivity;
 import ocs.com.dr_tips.activity.LoginActivity;
 import ocs.com.dr_tips.fragment.ChangePasswordFragment;
+import ocs.com.dr_tips.fragment.EditProfileFragment;
 import ocs.com.dr_tips.fragment.LoginFragment;
-import ocs.com.dr_tips.fragment.TipsHomeFragment;
 import ocs.com.dr_tips.fragment.PickImageDialogFragment;
 import ocs.com.dr_tips.fragment.RegisterFragment;
+import ocs.com.dr_tips.fragment.TipsHomeFragment;
 
 /**
  * Created by Randa on 3/18/2018.
@@ -31,4 +32,6 @@ public interface AppComponent {
     void inject(@NotNull PickImageDialogFragment pickImageDialogFragment);
 
     void inject(@NotNull ChangePasswordFragment changePasswordFragment);
+
+    void inject(@NotNull EditProfileFragment editProfileFragment);
 }

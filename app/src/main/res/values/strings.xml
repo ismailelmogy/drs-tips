@@ -49,6 +49,8 @@
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="update">Update</string>
     <string name="change_password">Change Password</string>
+    <string name="save_data_error">There is some error happened, your data is not saved</string>
+    <string name="wrong_old_password">Old Password is wrong</string>
 
 </resources>
 

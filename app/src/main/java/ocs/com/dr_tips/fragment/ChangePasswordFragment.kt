@@ -1,14 +1,17 @@
 package ocs.com.dr_tips.fragment
 
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import kotlinx.android.synthetic.main.fragment_change_password.*
 import ocs.com.dr_tips.DrTipsApplication
 import ocs.com.dr_tips.R
+import ocs.com.dr_tips.util.DialogMaker
 import ocs.com.dr_tips.viewModel.LoginViewModel
 import ocs.com.dr_tips.viewModel.ProfileEditViewModel
 import javax.inject.Inject
@@ -47,10 +50,18 @@ class ChangePasswordFragment : DrsTipsBaseFragment() {
         profileEditViewModel.changePassword(oldPasswordTIL.editText?.text.toString(),newPasswordTIL.editText?.text.toString())
                 .subscribe({
                     dismissProgressDialog()
-                    //TODO: go back
+                    activity?.onBackPressed()
                 },{
                     dismissProgressDialog()
-                    //TODO: handle error
+                    if (it is FirebaseAuthInvalidCredentialsException){
+                        DialogMaker.makeDialog(context,getString(R.string.wrong_old_password),getString(R.string.ok),{
+                            dialogInterface:DialogInterface,view:Int -> dialogInterface.dismiss()
+                        }).show()
+                    } else {
+                        DialogMaker.makeDialog(context,getString(R.string.save_data_error),getString(R.string.ok),{
+                            dialogInterface:DialogInterface,view:Int -> dialogInterface.dismiss()
+                        }).show()
+                    }
                 })
     }
 
@@ -81,6 +92,4 @@ class ChangePasswordFragment : DrsTipsBaseFragment() {
         }
         return isValid
     }
-
-
 }
