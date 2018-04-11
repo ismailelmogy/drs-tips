@@ -43,6 +43,11 @@
     <string name="country">Country</string>
     <string name="country_not_selected">Please choose a country!</string>
     <string name="registration">Registration</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="update">Update</string>
+    <string name="change_password">Change Password</string>
 
 </resources>
 
