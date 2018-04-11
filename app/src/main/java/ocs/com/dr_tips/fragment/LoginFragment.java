@@ -59,7 +59,7 @@ public class LoginFragment extends Fragment{
     TextView PasswordErrorText;
     @BindView(R.id.fab_btn)
     FloatingActionButton register;
-    private FirebaseAuth Auth;
+    private FirebaseAuth auth;
 
 
 
@@ -69,7 +69,9 @@ public class LoginFragment extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        auth = FirebaseAuth.getInstance();
     }
+
 
     @Nullable
     @Override
@@ -93,13 +95,13 @@ public class LoginFragment extends Fragment{
             String inputPassword = password.getText().toString();
             if (emailErrorText.getVisibility() != View.VISIBLE && PasswordErrorText.getVisibility() != View.VISIBLE) {
                 //authenticate user
-                Auth.signInWithEmailAndPassword(inputEmail, inputPassword)
+                auth.signInWithEmailAndPassword(inputEmail, inputPassword)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = Auth.getCurrentUser();
+                                    FirebaseUser user = auth.getCurrentUser();
                                     Toast.makeText(getContext(), "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                                     Intent i=new Intent(getActivity(), HomeActivity.class);
                                     startActivity(i);
