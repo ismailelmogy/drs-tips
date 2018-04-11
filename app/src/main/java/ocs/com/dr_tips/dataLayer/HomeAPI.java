@@ -3,6 +3,7 @@ package ocs.com.dr_tips.dataLayer;
 import java.util.HashMap;
 
 import ocs.com.dr_tips.model.Tip;
+import ocs.com.dr_tips.model.TipsPackage;
 import rx.Observable;
 
 /**
@@ -11,5 +12,6 @@ import rx.Observable;
 
 public interface HomeAPI {
     Observable<HashMap<String,Tip>> getTips();
+    Observable<HashMap<String,TipsPackage>> getPackages();
 
 }

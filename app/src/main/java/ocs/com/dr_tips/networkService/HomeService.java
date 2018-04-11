@@ -3,6 +3,7 @@ package ocs.com.dr_tips.networkService;
 import java.util.HashMap;
 
 import ocs.com.dr_tips.model.Tip;
+import ocs.com.dr_tips.model.TipsPackage;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -14,5 +15,7 @@ import rx.Observable;
 public interface HomeService {
     @GET("tips.json")
     Observable<HashMap<String,Tip>> getTips();
+    @GET("packages.json")
+    Observable<HashMap<String,TipsPackage>> getPackages();
 }
 

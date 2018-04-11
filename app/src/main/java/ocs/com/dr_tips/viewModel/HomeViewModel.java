@@ -3,6 +3,7 @@ package ocs.com.dr_tips.viewModel;
 import java.util.HashMap;
 
 import ocs.com.dr_tips.model.Tip;
+import ocs.com.dr_tips.model.TipsPackage;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -13,6 +14,7 @@ import rx.Subscriber;
 public interface HomeViewModel {
 
     Observable<HashMap<String,Tip>> getTips();
+    Observable<HashMap<String, TipsPackage>> getPackages();
 
 
 }

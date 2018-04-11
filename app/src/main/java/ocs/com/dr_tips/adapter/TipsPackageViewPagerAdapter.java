@@ -2,7 +2,6 @@ package ocs.com.dr_tips.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,44 +11,38 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
 
 import ocs.com.dr_tips.R;
-import ocs.com.dr_tips.model.Tip;
-import ocs.com.dr_tips.viewModel.HomeViewModel;
-
-import static java.lang.Integer.parseInt;
+import ocs.com.dr_tips.model.TipsPackage;
 
 /**
- * Created by Alamrawy on 3/26/2018.
+ * Created by Alamrawy on 4/5/2018.
  */
 
-public class TipsViewPagerAdapter  extends PagerAdapter {
-    private ArrayList <Tip> tips;
+public class TipsPackageViewPagerAdapter extends PagerAdapter {
+    private ArrayList<TipsPackage> tipsPackage;
     private Context context;
 
-    public TipsViewPagerAdapter(Context context , ArrayList<Tip> tips){
+    public TipsPackageViewPagerAdapter(Context context,ArrayList<TipsPackage> tipsPackage){
         this.context=context;
-        this.tips=tips;
+        this.tipsPackage=tipsPackage;
+
     }
     @Override
     public int getCount() {
-        return tips.size();
+        return tipsPackage.size();
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == (RelativeLayout)object;
+        return view == (LinearLayout)object;
     }
     @Override
     public Object instantiateItem(ViewGroup container , int position){
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = layoutInflater.inflate(R.layout.tip,container,false);
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.tipImageId);
-        TextView textView = (TextView) itemView.findViewById(R. id.tipTextId);
-        imageView.setImageBitmap(tips.get(position).getBitmapImg());
-        textView.setText(tips.get(position).getText());
+        View itemView = layoutInflater.inflate(R.layout.tips_package,container,false);
+        TextView textView = (TextView) itemView.findViewById(R.id.packageDescriptionId);
+        textView.setText(tipsPackage.get(position).getDescription());
         container.addView(itemView);
         return itemView;
     }
@@ -60,6 +53,6 @@ public class TipsViewPagerAdapter  extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((RelativeLayout)object);
+        container.removeView((LinearLayout)object);
     }
 }
