@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="10"
     tools:context="ocs.com.dr_tips.activity.HomeActivity">
 
-
     <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></FrameLayout>
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation"
+        android:animateLayoutChanges="true"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/navigation"
+        android:background="@color/colorPrimaryDark"></View>
 
-</LinearLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@drawable/tab_layout"
+        app:itemTextColor="@drawable/tab_layout"
+        app:menu="@menu/navigation_bar"/>
+
+</RelativeLayout>

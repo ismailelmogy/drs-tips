@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ocs.com.dr_tips.fragment.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/doctor"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/home_doctor"
+        android:layout_marginEnd="120dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginBottom="29dp"
+        android:layout_marginTop="120dp"/>
+    <TextView
+        android:layout_below="@+id/doctor"
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/WELCOME"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp"
+         />
+    <TextView
+        android:id="@+id/text"
+        android:layout_below="@+id/welcome"
+        android:layout_width="220sp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="@color/lightGray"
+        android:text="@string/text"/>
+    <Button
+        android:id="@+id/show_packages"
+        android:layout_width="match_parent"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
+        android:layout_centerInParent="true"
+        android:background="@color/orange"
+        android:text="@string/Show_packages"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>
