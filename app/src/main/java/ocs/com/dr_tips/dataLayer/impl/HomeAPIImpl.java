@@ -1,7 +1,10 @@
 package ocs.com.dr_tips.dataLayer.impl;
 
+import java.util.HashMap;
+
 import ocs.com.dr_tips.dataLayer.HomeAPI;
 import ocs.com.dr_tips.model.User;
+import ocs.com.dr_tips.model.Tip;
 import ocs.com.dr_tips.networkService.HomeService;
 import rx.Observable;
 
@@ -20,4 +23,8 @@ class HomeAPIImpl implements HomeAPI {
         return service.getUserData(userId);
     }
 
+    @Override
+    public Observable<HashMap<String,Tip>> getTips() {
+        return service.getTips();
+    }
 }
