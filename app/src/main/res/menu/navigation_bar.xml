@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/nav_home"
+        android:title="home"/>
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/nav_user"
+        android:title="profile"/>
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/nav_info"
+        android:title="about"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/nav_settings"
+        android:title="settings"/>
+</menu>

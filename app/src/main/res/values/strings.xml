@@ -13,6 +13,11 @@
         <item>email</item>
         <item>public_profile</item>
     </string-array>
+    <string name="WELCOME">WELCOME!</string>
+    <string name="text">You have to purchase
+                     a package to start your
+                     knowledge trip</string>
+    <string name="Show_packages">Show Packages</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
