@@ -22,6 +22,7 @@ import ocs.com.dr_tips.activity.HomeActivity
 import ocs.com.dr_tips.adapter.CountriesHintArrayAdapter
 import ocs.com.dr_tips.model.Country
 import ocs.com.dr_tips.model.User
+import ocs.com.dr_tips.util.AppDataHolder
 import ocs.com.dr_tips.util.DialogMaker
 import ocs.com.dr_tips.util.Utils
 import ocs.com.dr_tips.viewModel.LoginViewModel
@@ -147,6 +148,7 @@ class RegisterFragment : DrsTipsBaseFragment() {
         showProgressDialog()
         loginViewModel.setUserData(registeredUser).subscribe({
             dismissProgressDialog()
+            AppDataHolder.getInstance().loggedInUser = registeredUser
             startActivity(Intent(context, HomeActivity::class.java))
             activity?.finish()
         }, {
