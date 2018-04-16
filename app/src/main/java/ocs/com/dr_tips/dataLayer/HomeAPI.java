@@ -13,7 +13,9 @@ import ocs.com.dr_tips.model.Tip;
  */
 
 public interface HomeAPI {
-      Observable<User> getUserData(String userId);
+    Observable<User> getUserData(String userId);
     Observable<HashMap<String,Tip>> getTips();
+    Observable<String>getAboutUsContent();
+
 
 }

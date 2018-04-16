@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ocs.com.dr_tips.activity.HomeActivity;
 import ocs.com.dr_tips.activity.LoginActivity;
+import ocs.com.dr_tips.fragment.AboutUsFragment;
 import ocs.com.dr_tips.fragment.ChangePasswordFragment;
 import ocs.com.dr_tips.fragment.HomeFragment;
 import ocs.com.dr_tips.fragment.LoginFragment;
@@ -26,6 +27,7 @@ public interface AppComponent {
     void inject (LoginFragment loginFragment);
     void inject (HomeActivity homeActivity);
     void inject (TipsHomeFragment tipsHomeFragment);
+    void  inject (AboutUsFragment aboutUsFragment);
 
     void inject(RegisterFragment registerFragment);
     void inject (ProfileFragment fragment);

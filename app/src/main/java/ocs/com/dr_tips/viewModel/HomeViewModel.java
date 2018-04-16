@@ -15,4 +15,5 @@ public interface HomeViewModel {
 
 
     Observable<User> getUserData(String userId);
+    Observable<String>getAboutUsContent();
 }

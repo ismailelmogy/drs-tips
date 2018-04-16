@@ -17,5 +17,7 @@ public interface HomeService {
 
     @GET("/user/{uid}.json")
     Observable<User>getUserData(@Path("uid") String userId);
+    @GET("aboutUs.json")
+    Observable<String>getAboutUsContent();
 
 }

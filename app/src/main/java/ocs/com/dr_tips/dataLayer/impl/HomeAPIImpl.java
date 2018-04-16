@@ -27,4 +27,7 @@ class HomeAPIImpl implements HomeAPI {
     public Observable<HashMap<String,Tip>> getTips() {
         return service.getTips();
     }
+
+    @Override
+    public Observable<String>getAboutUsContent(){ return service.getAboutUsContent(); }
 }
