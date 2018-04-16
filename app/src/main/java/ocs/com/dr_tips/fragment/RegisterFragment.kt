@@ -90,6 +90,7 @@ class RegisterFragment : DrsTipsBaseFragment() {
                 registeredUser.isPaid = false
                 registeredUser.name = nameEditText.text.toString()
                 registeredUser.mobileNumber = mobileEditText.text.toString()
+                registeredUser.countryId = countriesData.get(countrySpinner.selectedItemPosition).countryCode
                 if (!specialityEditText.text.isNullOrBlank()) {
                     registeredUser.speciality = specialityEditText?.text.toString()
                 }
@@ -99,6 +100,7 @@ class RegisterFragment : DrsTipsBaseFragment() {
                 if (!titleEditText.text.isNullOrBlank()) {
                     registeredUser.title = titleEditText.text.toString()
                 }
+
 
                 if (auth.currentUser == null) {
                     subscribeToRegister()
