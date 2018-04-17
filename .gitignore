@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.iml
 .gradle
 /local.properties
@@ -11,3 +12,30 @@
 gradle/
 
 \.idea/
+||||||| merged common ancestors
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+/.idea/modules.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+=======
+
+\.gradle/
+
+\.idea/
+
+gradle/
+
+local\.properties
+
+build/
+app/app.iml
+dr-tips.iml
+
+drs-tips\.iml
+>>>>>>> 5a609c0b4b07f2ffdd4a1bf0114f608e990d547f

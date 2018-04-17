@@ -6,4 +6,6 @@ package ocs.com.dr_tips.util;
 
 public class Constants {
     public static final String RETROFIT_BASE_URL = "https://dr-tips.firebaseio.com/";
+    public static final String TAG="TAG";
+    public static final String PROFILE_PIC_KEY="profile_pic";
 }

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_background_height"
+            android:background="@drawable/ic_5dt_background"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profilePicImageView"
+                    android:layout_width="@dimen/profile_pic_dimen"
+                    android:layout_height="@dimen/profile_pic_dimen"
+                    android:layout_marginBottom="@dimen/base_margin"
+                    android:layout_marginLeft="@dimen/profile_margin_bottom"
+                    android:layout_marginStart="@dimen/profile_margin_bottom"
+                    android:src="@drawable/camera_shape"
+                    app:civ_border_color="@color/lightGray"
+                    app:civ_border_width="3dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:layout_marginEnd="@dimen/second_base_margin"
+                android:layout_marginLeft="@dimen/second_base_margin"
+                android:layout_marginRight="@dimen/second_base_margin"
+                android:layout_marginStart="@dimen/second_base_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profileNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_register_name"
+                    android:drawablePadding="@dimen/second_base_margin"
+                    android:drawableStart="@drawable/ic_register_name"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="Youmna Yassr"
+                    android:textColor="@color/profileMainInfoColor"
+                    android:textSize="@dimen/base_text_size" />
+
+                <TextView
+                    android:id="@+id/profileEmailTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/second_base_margin"
+                    android:drawableLeft="@drawable/ic_5dt_profile_email"
+                    android:drawablePadding="@dimen/second_base_margin"
+                    android:drawableStart="@drawable/ic_5dt_profile_email"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="yyasser@gmail.com"
+                    android:textColor="@color/profileMainInfoColor"
+                    android:textSize="@dimen/base_text_size" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/third_base_margin"
+            android:layout_marginTop="@dimen/third_base_margin"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/third_base_margin"
+                android:paddingLeft="@dimen/third_base_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profileCountryImageView"
+                        android:layout_width="@dimen/icon_dimen"
+                        android:layout_height="@dimen/icon_dimen"
+                        app:srcCompat="@drawable/ic_5dt_profile_country" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/country"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/second_base_text_size" />
+
+                    <TextView
+                        android:id="@+id/profileCountryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Egypt"
+                        android:textSize="@dimen/base_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profileSpecialityImageView"
+                        android:layout_width="@dimen/icon_dimen"
+                        android:layout_height="@dimen/icon_dimen"
+                        app:srcCompat="@drawable/ic_5dt_profile_speciality" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/speciality"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/second_base_text_size" />
+
+                    <TextView
+                        android:id="@+id/profileSpecialityTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Gynecologist"
+                        android:textSize="@dimen/base_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profileCurrentPlanImageView"
+                        android:layout_width="@dimen/icon_dimen"
+                        android:layout_height="@dimen/icon_dimen"
+                        app:srcCompat="@drawable/ic_5dt_profile_current_plan1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/current_plan"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/second_base_text_size" />
+
+                    <TextView
+                        android:id="@+id/profileCurrentPlanTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Package 2"
+                        android:textSize="@dimen/base_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/third_base_margin"
+                android:paddingEnd="@dimen/third_base_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profileMobileImageView"
+                        android:layout_width="@dimen/icon_dimen"
+                        android:layout_height="@dimen/icon_dimen"
+                        app:srcCompat="@drawable/ic_5dt_profile_mobile1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/mobile"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/second_base_text_size" />
+
+                    <TextView
+                        android:id="@+id/profileMobileTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="01129695382"
+                        android:textSize="@dimen/base_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profilePlaceOfWorkImageView"
+                        android:layout_width="@dimen/icon_dimen"
+                        android:layout_height="@dimen/icon_dimen"
+                        app:srcCompat="@drawable/ic_5dt_profile_place_of_work1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/place_of_work"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/second_base_text_size" />
+
+                    <TextView
+                        android:id="@+id/profilePlaceOfWorkTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="El Nada hospital"
+                        android:textSize="@dimen/base_text_size" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
+
