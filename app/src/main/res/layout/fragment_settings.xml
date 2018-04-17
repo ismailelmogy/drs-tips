@@ -1,13 +1,28 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="ocs.com.dr_tips.fragment.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ic_change_pass"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_settings_change_password" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

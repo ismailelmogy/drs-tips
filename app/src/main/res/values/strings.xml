@@ -23,6 +23,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="facebook_login_error">Warning! Data is not retrieved.</string>
     <string name="ok">OK.</string>
+    <string name="settings">Settings</string>
     <string name="facebook_login_cancel">You canceled your facebook login</string>
     <string name="login_failed">Can\'t log you into the app, please try again later</string>
     <string name="name">Name</string>

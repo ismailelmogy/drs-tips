@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import ocs.com.dr_tips.R;
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends DrsTipsBaseFragment {
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -18,7 +18,9 @@ public class SettingsFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        setToolbarWithBackBtn(R.string.settings);
     }
 
     @Override
