@@ -5,6 +5,7 @@ import java.util.HashMap;
 import ocs.com.dr_tips.dataLayer.HomeAPI;
 import ocs.com.dr_tips.model.User;
 import ocs.com.dr_tips.model.Tip;
+import ocs.com.dr_tips.model.TipsPackage;
 import ocs.com.dr_tips.networkService.HomeService;
 import ocs.com.dr_tips.viewModel.HomeViewModel;
 import rx.Observable;
@@ -35,5 +36,10 @@ class HomeViewModelImpl extends BaseViewModelImpl implements HomeViewModel {
     public Observable<HashMap<String,Tip>> getTips() {
 
      return  api.getTips().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<HashMap<String, TipsPackage>> getPackages() {
+        return api.getPackages().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }

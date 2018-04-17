@@ -13,6 +13,7 @@ import ocs.com.dr_tips.fragment.LoginFragment;
 import ocs.com.dr_tips.fragment.PickImageDialogFragment;
 import ocs.com.dr_tips.fragment.ProfileFragment;
 import ocs.com.dr_tips.fragment.RegisterFragment;
+import ocs.com.dr_tips.fragment.PackagesDialogFragment;
 import ocs.com.dr_tips.fragment.TipsHomeFragment;
 
 /**
@@ -34,4 +35,5 @@ public interface AppComponent {
     void inject(@NotNull ChangePasswordFragment changePasswordFragment);
     void inject (HomeFragment homeFragment);
 
+    void inject (PackagesDialogFragment packagesDialogFragment);
 }
