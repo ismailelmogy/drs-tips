@@ -48,21 +48,20 @@ class EditProfileFragment : DrsTipsBaseFragment() {
         }
 
         editButton.setOnClickListener {
+            val subscriptionBody = HashMap<String, String>()
             if (editProfileType == EditProfileEnum.WORK_PLACE) {
-                val subscriptionBody = HashMap<String, String>()
                 subscriptionBody.put(editProfileType.getKey(), workPlaceEditText.text.toString())
                 subscribeToEditProfile(subscriptionBody)
             } else if (editProfileType == EditProfileEnum.SPECIALITY) {
-                val subscriptionBody = HashMap<String, String>()
                 subscriptionBody.put(editProfileType.getKey(), specialityEditText.text.toString())
                 subscribeToEditProfile(subscriptionBody)
             } else if (editProfileType == EditProfileEnum.EMAIL && checkEmail()) {
                 subscribeToEmailEdit(emailEditText.text.toString())
             } else if (editProfileType == EditProfileEnum.NAME && checkName()) {
-                val subscriptionBody = HashMap<String, String>()
                 subscriptionBody.put(editProfileType.getKey(), nameEditText.text.toString())
                 subscribeToEditProfile(subscriptionBody)
             }
+
         }
     }
 
@@ -103,6 +102,8 @@ class EditProfileFragment : DrsTipsBaseFragment() {
             AppDataHolder.getInstance().loggedInUser.workPlace = workPlaceEditText.text.toString()
         } else if (editProfileType == EditProfileEnum.SPECIALITY) {
             AppDataHolder.getInstance().loggedInUser.speciality = specialityEditText.text.toString()
+        } else if(editProfileType == EditProfileEnum.NAME){
+            AppDataHolder.getInstance().loggedInUser.name = nameEditText.text.toString()
         }
     }
 
