@@ -20,5 +20,7 @@ public interface HomeService {
     Observable<HashMap<String,TipsPackage>> getPackages();
     @GET("/user/{uid}.json")
     Observable<User>getUserData(@Path("uid") String userId);
+    @GET("aboutUs.json")
+    Observable<String>getAboutUsContent();
 
 }

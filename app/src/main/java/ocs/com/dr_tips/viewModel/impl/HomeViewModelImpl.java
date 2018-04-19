@@ -42,4 +42,10 @@ class HomeViewModelImpl extends BaseViewModelImpl implements HomeViewModel {
     public Observable<HashMap<String, TipsPackage>> getPackages() {
         return api.getPackages().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
+    @Override
+    public Observable<String>getAboutUsContent(){
+        return  api.getAboutUsContent().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+
+    }
 }

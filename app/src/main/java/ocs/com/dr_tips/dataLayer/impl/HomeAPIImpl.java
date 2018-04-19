@@ -33,4 +33,7 @@ class HomeAPIImpl implements HomeAPI {
     public Observable<HashMap<String, TipsPackage>> getPackages() {
         return service.getPackages();
     }
+
+    @Override
+    public Observable<String>getAboutUsContent(){ return service.getAboutUsContent(); }
 }

@@ -18,5 +18,7 @@ public interface HomeAPI {
     Observable<User> getUserData(String userId);
     Observable<HashMap<String,Tip>> getTips();
     Observable<HashMap<String,TipsPackage>> getPackages();
+    Observable<String>getAboutUsContent();
+
 
 }
