@@ -7,12 +7,14 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ocs.com.dr_tips.activity.HomeActivity;
 import ocs.com.dr_tips.activity.LoginActivity;
+import ocs.com.dr_tips.fragment.AboutUsFragment;
 import ocs.com.dr_tips.fragment.ChangePasswordFragment;
 import ocs.com.dr_tips.fragment.HomeFragment;
 import ocs.com.dr_tips.fragment.LoginFragment;
 import ocs.com.dr_tips.fragment.PickImageDialogFragment;
 import ocs.com.dr_tips.fragment.ProfileFragment;
 import ocs.com.dr_tips.fragment.RegisterFragment;
+import ocs.com.dr_tips.fragment.PackagesDialogFragment;
 import ocs.com.dr_tips.fragment.TipsHomeFragment;
 
 /**
@@ -26,6 +28,7 @@ public interface AppComponent {
     void inject (LoginFragment loginFragment);
     void inject (HomeActivity homeActivity);
     void inject (TipsHomeFragment tipsHomeFragment);
+    void  inject (AboutUsFragment aboutUsFragment);
 
     void inject(RegisterFragment registerFragment);
     void inject (ProfileFragment fragment);
@@ -34,4 +37,5 @@ public interface AppComponent {
     void inject(@NotNull ChangePasswordFragment changePasswordFragment);
     void inject (HomeFragment homeFragment);
 
+    void inject (PackagesDialogFragment packagesDialogFragment);
 }
