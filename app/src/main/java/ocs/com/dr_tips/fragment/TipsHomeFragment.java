@@ -26,7 +26,7 @@ import ocs.com.dr_tips.model.Tip;
 import ocs.com.dr_tips.viewModel.HomeViewModel;
 
 
-public class TipsHomeFragment extends Fragment {
+public class TipsHomeFragment extends  DrsTipsBaseFragment {
 
 
 
@@ -65,12 +65,15 @@ public class TipsHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tips_home, container, false);
         ButterKnife.bind(this,view);
+        showProgressDialog();
         ((DrTipsApplication)getActivity().getApplication()).getComponent().inject(this);
         homeViewModel.getTips().subscribe(
                 tip -> {
+                    dismissProgressDialog();
                     this.tips.putAll(tip);
                 },
                 throwable -> {
+                    dismissProgressDialog();
                     Log.d("Throwable", throwable.getMessage());
                 },
                 ()->{
