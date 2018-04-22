@@ -22,6 +22,7 @@ import ocs.com.dr_tips.activity.HomeActivity
 import ocs.com.dr_tips.adapter.CountriesHintArrayAdapter
 import ocs.com.dr_tips.model.Country
 import ocs.com.dr_tips.model.User
+import ocs.com.dr_tips.util.AppDataHolder
 import ocs.com.dr_tips.util.DialogMaker
 import ocs.com.dr_tips.util.Utils
 import ocs.com.dr_tips.viewModel.LoginViewModel
@@ -89,6 +90,7 @@ class RegisterFragment : DrsTipsBaseFragment() {
                 registeredUser.isPaid = false
                 registeredUser.name = nameEditText.text.toString()
                 registeredUser.mobileNumber = mobileEditText.text.toString()
+                registeredUser.countryId = countriesData.get(countrySpinner.selectedItemPosition).countryCode
                 if (!specialityEditText.text.isNullOrBlank()) {
                     registeredUser.speciality = specialityEditText?.text.toString()
                 }
@@ -98,6 +100,7 @@ class RegisterFragment : DrsTipsBaseFragment() {
                 if (!titleEditText.text.isNullOrBlank()) {
                     registeredUser.title = titleEditText.text.toString()
                 }
+
 
                 if (auth.currentUser == null) {
                     subscribeToRegister()
@@ -147,6 +150,7 @@ class RegisterFragment : DrsTipsBaseFragment() {
         showProgressDialog()
         loginViewModel.setUserData(registeredUser).subscribe({
             dismissProgressDialog()
+            AppDataHolder.getInstance().loggedInUser = registeredUser
             startActivity(Intent(context, HomeActivity::class.java))
             activity?.finish()
         }, {
