@@ -37,14 +37,11 @@ class EditProfileFragment : DrsTipsBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (editProfileType == EditProfileEnum.WORK_PLACE) {
-            workPlaceView.visibility = VISIBLE
-        } else if (editProfileType == EditProfileEnum.SPECIALITY) {
-            specialityView.visibility = VISIBLE
-        } else if (editProfileType == EditProfileEnum.EMAIL) {
-            emailView.visibility = VISIBLE
-        } else if (editProfileType == EditProfileEnum.NAME) {
-            nameView.visibility = VISIBLE
+        when (editProfileType) {
+            EditProfileEnum.WORK_PLACE -> workPlaceView.visibility = VISIBLE
+            EditProfileEnum.SPECIALITY -> specialityView.visibility = VISIBLE
+            EditProfileEnum.EMAIL -> emailView.visibility = VISIBLE
+            EditProfileEnum.NAME -> nameView.visibility = VISIBLE
         }
 
         editButton.setOnClickListener {
