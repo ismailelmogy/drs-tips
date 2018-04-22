@@ -59,10 +59,12 @@
     <string name="change_language">Change Language</string>
     <string name="save_data_error">There is some error happened, your data is not saved</string>
     <string name="wrong_old_password">Old Password is wrong</string>
-    
+
     <string name="logout">Logout</string>
     <string name="contact_us">Contact us</string>
     <string name="payment_info">Payment info</string>
+    <string name="about_us_title">About us</string>
+    <string name="home_title">Home</string>
 
 </resources>
 
