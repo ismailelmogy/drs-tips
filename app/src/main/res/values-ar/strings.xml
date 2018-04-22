@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dr-Tips</string>
+    <string name="settings">الاعدادات</string>
+    <string name="change_language">تغيير اللغه</string>
+    <string name="change_password">تغير كلمه السر</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="contact_us">تواصل معنا</string>
+    <string name="payment_info">معلومات الدفع</string>
+</resources>

@@ -96,6 +96,7 @@ public class LoginFragment extends DrsTipsBaseFragment {
         forgetPassword.setText(Html.fromHtml(getString(R.string.forget_password)));
         validateEmailPass();
         Login();
+
         return view;
     }
 
