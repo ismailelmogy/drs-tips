@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class User {
+    private boolean isVerified;
+
     @SerializedName("name")
     private String name;
     @SerializedName("profile_pic")
@@ -35,6 +37,13 @@ public class User {
     @SerializedName("package_id")
     private int packageId;
 
+
+    public boolean getIsVerified(){
+        return isVerified;
+    }
+    public void setVerified(){
+        this.isVerified=isVerified;
+    }
     public String getName() {
         return name;
     }

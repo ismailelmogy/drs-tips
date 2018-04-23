@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#CC2EFA</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lightGray">#E6E6E6</color>
+    <color name="darkGrey">#A9A9A9</color>
     <color name="profileMainInfoColor">#ebebeb</color>
     <color name="red">#FF0000</color>
     <color name="blue">#3F51B5</color>

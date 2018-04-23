@@ -23,10 +23,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.HomeActivity"
+            android:label= "Home">
+        </activity>
 
         <activity android:name=".activity.LoginActivity">
+
 
         </activity>
     </application>

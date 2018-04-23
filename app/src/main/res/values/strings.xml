@@ -59,5 +59,32 @@
     <string name="profile_pic_saved_success">Your profile picture successfully updated</string>
     <string name="update_profile_pic_failed">Connectivity Error! Please check your internet connection and try again.</string>
 
+
+        <string name="WELCOME">WELCOME!</string>
+        <string name="text">You have to purchase
+                     a package to start your
+                     knowledge trip</string>
+        <string name="Show_packages">Show Packages</string>
+        <string name="buy">Buy</string>
+
+        <!-- TODO: Remove or change this placeholder text -->
+
+        <string name="wrong_old_password">Old Password is wrong</string>
+        <string name="PlanType">You are currently in</string>
+        <string name="currently">You are currently in</string>
+        <string name="updatePackage">Update Your Package</string>
+        <string name="error">Error Occured</string>
+        <string name="UnfoundUser">User not found</string>
+        <string name="home">Home</string>
+        <string name="used_email">This email is used before</string>
+    <string name="change_language">Change Language</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
+    <string name="Cancel">Cancel</string>
+
+
 </resources>
+
+
+
 

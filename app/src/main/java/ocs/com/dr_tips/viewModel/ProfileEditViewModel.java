@@ -8,8 +8,8 @@ public interface ProfileEditViewModel {
 
     Completable changeEmail(String newEmail);
 
-    Completable changePassword(String oldPassword,String newPassword);
+    Completable changePassword(String oldPassword, String newPassword);
 
-    Completable updateUserProfilePic(HashMap<String,String> profilePic);
+    Completable updateUserProfilePic(HashMap<String, String> profilePic);
 
 }

@@ -148,7 +148,6 @@ class RegisterFragment : DrsTipsBaseFragment() {
         showProgressDialog()
         loginViewModel.setUserData(registeredUser).subscribe({
             dismissProgressDialog()
-            AppDataHolder.getInstance().loggedInUser=registeredUser
             startActivity(Intent(context, HomeActivity::class.java))
             activity?.finish()
         }, {
