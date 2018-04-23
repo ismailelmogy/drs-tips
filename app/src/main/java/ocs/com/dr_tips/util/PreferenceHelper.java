@@ -10,11 +10,20 @@ import android.preference.PreferenceManager;
 
 public class PreferenceHelper {
     private Context context;
+    private static final String LANGUAGE = "language";
 
     public PreferenceHelper(Context context) {
         this.context = context;
     }
 
+
+    public String getLanguage() {
+        return get(LANGUAGE, Constants.ENGLISH);
+    }
+
+    public void setLanguage(String language) {
+        set(LANGUAGE, language);
+    }
     private void set(String key, String value) {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
         editor.putString(key, value);
