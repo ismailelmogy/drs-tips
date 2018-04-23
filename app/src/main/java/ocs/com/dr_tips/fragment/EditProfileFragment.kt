@@ -37,9 +37,9 @@ import ocs.com.dr_tips.viewModel.ProfileEditViewModel
  * Created by Rawy on 11/04/2018.
  */
 
-class EditProfileFragment1 : DrsTipsBaseFragment() {
+class EditProfileFragment: DrsTipsBaseFragment() {
     var profilePictureToBase64 = ""
-    var registeredUer: User? = null
+     var registeredUer: User
     var auth: FirebaseAuth? = null
     var appDataHolder: AppDataHolder? = null
     var unbinder: Unbinder? = null
